@@ -3,7 +3,7 @@
 class Basert < Formula
   desc "Fast local LLM inference on Apple Silicon and NVIDIA GB10"
   homepage "https://docs.basecompute.co"
-  version "0.2.6"
+  version "0.4.2"
   # The basert CLI launcher is Apache-2.0; the engine binaries it drives are
   # under the proprietary BaseRT Engine license shipped in the bundle.
   license :cannot_represent
@@ -16,15 +16,15 @@ class Basert < Formula
   on_macos do
     depends_on macos: :sequoia
     if Hardware::CPU.arm?
-      url "https://github.com/basecompute/baseRT/releases/download/v0.2.6/basert-engine-macos-arm64-0.2.6.tar.gz"
-      sha256 "9bcb204b7cca56470edc41323650f97f5b5fb45499825565a476be508237c84a"
+      url "https://github.com/basecompute/baseRT/releases/download/v0.4.2/basert-engine-macos-arm64-0.4.2.tar.gz"
+      sha256 "99a94e5b4a7e9ffda42c72e19afba10196a87d08a0c5c0484e39066209816041"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/basecompute/baseRT/releases/download/v0.2.6/basert-engine-linux-arm64-cuda-0.2.6.tar.gz"
-      sha256 "c4a71e0d684280929f49ae52101ff44d269db0ba12f3124fba0ff3e9ddda770f"
+      url "https://github.com/basecompute/baseRT/releases/download/v0.4.2/basert-engine-linux-arm64-cuda-0.4.2.tar.gz"
+      sha256 "dfb4de036af9cab2f1b18693c913d4670c4c1959560cb82fb180bdf554f66e5e"
     end
   end
 
