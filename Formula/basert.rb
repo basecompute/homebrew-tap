@@ -3,7 +3,7 @@
 class Basert < Formula
   desc "Fast local LLM inference on Apple Silicon and NVIDIA GB10"
   homepage "https://docs.basecompute.co"
-  version "0.4.2"
+  version "0.4.3"
   # The basert CLI launcher is Apache-2.0; the engine binaries it drives are
   # under the proprietary BaseRT Engine license shipped in the bundle.
   license :cannot_represent
@@ -16,15 +16,15 @@ class Basert < Formula
   on_macos do
     depends_on macos: :sequoia
     if Hardware::CPU.arm?
-      url "https://github.com/basecompute/baseRT/releases/download/v0.4.2/basert-engine-macos-arm64-0.4.2.tar.gz"
-      sha256 "99a94e5b4a7e9ffda42c72e19afba10196a87d08a0c5c0484e39066209816041"
+      url "https://github.com/basecompute/baseRT/releases/download/v0.4.3/basert-engine-macos-arm64-0.4.3.tar.gz"
+      sha256 "8857eb30ed53dbe740c04dd7cfee600543054073bcaa83f4c82350e2bf4a87a5"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/basecompute/baseRT/releases/download/v0.4.2/basert-engine-linux-arm64-cuda-0.4.2.tar.gz"
-      sha256 "dfb4de036af9cab2f1b18693c913d4670c4c1959560cb82fb180bdf554f66e5e"
+      url "https://github.com/basecompute/baseRT/releases/download/v0.4.3/basert-engine-linux-arm64-cuda-0.4.3.tar.gz"
+      sha256 "fec5b7dd419d54b13cabab9df7ccf103f53432fde771fc25ceac1973a6d44c12"
     end
   end
 
@@ -33,6 +33,8 @@ class Basert < Formula
     # basert-* runtime tools next to itself, and they find their kernel files
     # the same way. bin/basert is a small script that runs libexec/basert.
     libexec.install Dir["*"]
+    # basert self update leaves this copy to Homebrew and names the command.
+    (libexec/"installed-by").write "Homebrew: brew upgrade basert\n"
     bin.write_exec_script libexec/"basert"
     # For the Rust / Python / Node bindings and C API users.
     lib.install_symlink Dir[libexec/"libbaseRT*"]
