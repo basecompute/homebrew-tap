@@ -12,19 +12,19 @@ class Superfluid < Formula
     depends_on arch: :arm64
     depends_on macos: :sequoia
     if Hardware::CPU.arm?
-      url "https://github.com/basecompute/superfluid/releases/download/v0.1.9/superfluid-aarch64-apple-darwin.tar.gz"
-      sha256 "581ea84f6eee957ee907ae0085714a51d076f6203588906985ca3af4667d8789"
+      url "https://github.com/basecompute/superfluid/releases/download/v0.1.10/superfluid-aarch64-apple-darwin.tar.gz"
+      sha256 "66b6bdc92a252a82f1b913b9a34b79501d2bcacd343bba6ccad2d171fa799a34"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/basecompute/superfluid/releases/download/v0.1.9/superfluid-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "f1cb33b2b3182098d787eeccce05b9f6c9d1ab288b23af9bd9f7bb690c66bf8d"
+      url "https://github.com/basecompute/superfluid/releases/download/v0.1.10/superfluid-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "6beebbcb63a5171314c86ac977fd70ca4688b7c607a496bd879ba5124b1da7ac"
     end
     if Hardware::CPU.arm?
-      url "https://github.com/basecompute/superfluid/releases/download/v0.1.9/superfluid-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "74f5f762eb3ab95184e05dc00629436f0fc8c7531ff3d8277a0e512a115baebf"
+      url "https://github.com/basecompute/superfluid/releases/download/v0.1.10/superfluid-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "a27e31947e85482f0e9bc1c17a7b65630982badffcb433683b57902a7781e9fc"
     end
   end
 
