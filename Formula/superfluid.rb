@@ -1,7 +1,7 @@
 # Written by superfluid's publish workflow (packaging/homebrew/formula.py in
 # basecompute/superfluid) for each release; a change made here is overwritten.
 class Superfluid < Formula
-  desc "Serving daemon for local LLM inference across runtimes and machines"
+  desc "Local AI server for distributed LLM inference"
   homepage "https://superfluid.sh"
   license "Apache-2.0"
 
@@ -12,19 +12,19 @@ class Superfluid < Formula
     depends_on arch: :arm64
     depends_on macos: :sequoia
     if Hardware::CPU.arm?
-      url "https://github.com/basecompute/superfluid/releases/download/v0.1.12/superfluid-aarch64-apple-darwin.tar.gz"
-      sha256 "caaadc9e9bf120869aedad13321d8b3e54a02430669939c3eefa68c28986658f"
+      url "https://github.com/basecompute/superfluid/releases/download/v0.1.13/superfluid-aarch64-apple-darwin.tar.gz"
+      sha256 "2077e67f791a9c869a0807d50bec8c18b3c17dbed92189f2bbb3d712b74215ae"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/basecompute/superfluid/releases/download/v0.1.12/superfluid-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "4ae1f30edcfd306b009db7bd1b5a525e95e70b1f09d7fc8d050c8718ae51d393"
+      url "https://github.com/basecompute/superfluid/releases/download/v0.1.13/superfluid-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "00b7f07cf8fe8d36fe584edffc78bd700c7f035c020cf45c463d7fa452e5dd4e"
     end
     if Hardware::CPU.arm?
-      url "https://github.com/basecompute/superfluid/releases/download/v0.1.12/superfluid-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "b95e439a46131d4e363cec606b68073b58788763aee9b2cc7d5fade89646f2e1"
+      url "https://github.com/basecompute/superfluid/releases/download/v0.1.13/superfluid-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "7d6187c5ad3def620280d2989e55954caab98af6d7c0a32af27285bd7481a16f"
     end
   end
 
