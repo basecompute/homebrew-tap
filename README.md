@@ -53,9 +53,10 @@ Updating superfluid 0.2.2 → 0.2.3 with Homebrew in the background (log: /Users
   engine, in the foreground with a progress bar; `basert superfluid install
   <version>` goes back.
 - superfluid waits until nothing runs from the copy, a server included (for up
-  to seven days), then runs it. Homebrew updates its taps first, so it
-  installs the newest formula, which may be a release published since. Its log
-  is `~/.superfluid/logs/auto-update.log` (`$SUPERFLUID_HOME/logs`).
+  to seven days), then runs it with `HOMEBREW_NO_AUTO_UPDATE` set, and only
+  when the formula Homebrew already has is the release it found; otherwise the
+  log says so and it tries again a day later. Its log is
+  `~/.superfluid/logs/auto-update.log` (`$SUPERFLUID_HOME/logs`).
 
 A pinned formula (`brew pin`) or another user's Homebrew is left alone: you get
 a line naming `brew upgrade <formula>` instead (a pinned formula needs `brew
