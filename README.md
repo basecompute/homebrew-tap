@@ -27,12 +27,15 @@ brew update && brew upgrade basert superfluid
 
 From basert 0.5.5 and superfluid 0.2.2, a copy in a Homebrew that is yours
 updates itself. Once a release has been out for three days, a command run in a
-terminal (for superfluid: `serve`, `launch`, `node`, `top` or a `runtime`
-command) starts `brew upgrade basert` (or `brew upgrade superfluid`) in the
-background and says so in one line, with the release notes:
+terminal starts `brew upgrade basert` (or `brew upgrade superfluid`) in the
+background and says so in one line, with the release notes. For basert that is
+a command that does something, such as `serve`, `chat`, `pull` or `convert`
+(not `list`, `inspect`, `verify`, `self` or `superfluid`); for superfluid it is
+`serve`, `launch`, `node`, `top` or `runtime install|update|repair|remove|use`.
+A command run with `--json` or `--help` updates nothing.
 
 ```text
-Updating superfluid 0.2.2 → 0.2.3 with Homebrew in the background (log: ~/.superfluid/logs/auto-update.log) · release notes: … · turn off: superfluid self auto-update off
+Updating superfluid 0.2.2 → 0.2.3 with Homebrew in the background (log: /Users/you/.superfluid/logs/auto-update.log) · release notes: … · turn off: superfluid self auto-update off
 ```
 
 - basert runs it once that command is done, with `HOMEBREW_NO_AUTO_UPDATE`
@@ -40,15 +43,24 @@ Updating superfluid 0.2.2 → 0.2.3 with Homebrew in the background (log: ~/.sup
   otherwise the log says so and the upgrade is left to you. While a server
   runs on its engine it runs nothing, and the next command without one tries
   again. Its log is `auto-update.log` in basert's state directory
-  (`~/Library/Caches/baseRT/serve` on macOS, `~/.cache/baseRT/serve` on Linux;
-  `$BASERT_STATE_DIR` instead).
+  (`$BASERT_STATE_DIR` when set, else `serve` beside the model cache:
+  `~/Library/Caches/baseRT/serve` on macOS, `~/.cache/baseRT/serve` on Linux,
+  or beside `$BASERT_MODELS_DIR` when that is set). A command that does not
+  start basert's own update also brings the superfluid `basert serve` runs,
+  which basert downloads for itself (in `~/Library/Application
+  Support/baseRT/superfluid` on macOS, `~/.local/share/baseRT/superfluid` on
+  Linux; not the `superfluid` formula), to a newer release that serves its
+  engine, in the foreground with a progress bar; `basert superfluid install
+  <version>` goes back.
 - superfluid waits until nothing runs from the copy, a server included (for up
-  to seven days), then runs it. Its log is
-  `~/.superfluid/logs/auto-update.log` (`$SUPERFLUID_HOME/logs`).
+  to seven days), then runs it. Homebrew updates its taps first, so it
+  installs the newest formula, which may be a release published since. Its log
+  is `~/.superfluid/logs/auto-update.log` (`$SUPERFLUID_HOME/logs`).
 
 A pinned formula (`brew pin`) or another user's Homebrew is left alone: you get
-a line naming `brew upgrade <formula>` instead. Nothing updates without a
-terminal or with `CI` set.
+a line naming `brew upgrade <formula>` instead (a pinned formula needs `brew
+unpin <formula>` first). Nothing updates without a terminal or with `CI` set,
+and basert run as root updates nothing.
 
 To turn it off: `basert self auto-update off` or `superfluid self auto-update
 off` (from then on; `on` turns it back on), `BASERT_NO_UPDATE=1` or
