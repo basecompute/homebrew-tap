@@ -26,12 +26,17 @@ brew update && brew upgrade basert superfluid
 ```
 
 From basert 0.5.5 and superfluid 0.2.2, a copy in a Homebrew that is yours
-updates itself. Once a release has been out for three days, a command run in a
-terminal starts `brew upgrade basert` (or `brew upgrade superfluid`) in the
-background and says so in one line, with the release notes. For basert that is
-a command that does something, such as `serve`, `chat`, `pull` or `convert`
-(not `list`, `inspect`, `verify`, `self` or `superfluid`); for superfluid it is
-`serve`, `launch`, `node`, `top` or `runtime install|update|repair|remove|use`.
+updates itself. Once a release is out, a command run in a terminal starts
+`brew upgrade basert` (or `brew upgrade superfluid`) in the background and
+says so in one line, with the release notes. To let a release be out a while
+first, `basert self auto-update wait <days>` or `superfluid self auto-update
+wait <days>` waits that many days after it is published (0, the default:
+none; `BASERT_UPDATE_WAIT_DAYS` or `SUPERFLUID_UPDATE_WAIT_DAYS` for a shell,
+a service), and the release found is the newest that has been out that long.
+For basert that is a command that does something, such as `serve`, `chat`,
+`pull` or `convert` (not `list`, `inspect`, `verify`, `self` or `superfluid`);
+for superfluid it is `serve`, `launch`, `node`, `top` or
+`runtime install|update|repair|remove|use`.
 A command run with `--json` or `--help` updates nothing.
 
 ```text
@@ -64,10 +69,12 @@ unpin <formula>` first). Nothing updates without a terminal or with `CI` set,
 and basert run as root updates nothing.
 
 To turn it off: `basert self auto-update off` or `superfluid self auto-update
-off` (from then on; `on` turns it back on), `BASERT_NO_UPDATE=1` or
-`SUPERFLUID_NO_UPDATE=1` (a shell, a service), or `--no-update` on any command
-(that run). `brew upgrade` by hand works as before either way, and `basert self
-update` / `superfluid self update` run it for you, asking first.
+off` (from then on; `on` turns it back on; a daily line still says when a newer
+release is out), `BASERT_NO_UPDATE=1` or `SUPERFLUID_NO_UPDATE=1` (a shell, a
+service), or `--no-update` on any command (that run); the last two turn off
+the daily look and the line as well. `brew upgrade` by hand works as before
+either way, and `basert self update` / `superfluid self update` run it for
+you, asking first.
 
 ## Platforms
 
